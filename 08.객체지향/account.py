@@ -20,24 +20,24 @@ class Account:
     def __init__(self, ano, owner, balance):
         self.ano = ano
         self.owner = owner
-        self.balance = 0
+        self.__balance = 0
         if 0 <= balance <= 10000000:
-        	self.balance = balance
+        	self.__balance = balance
               
     def deposit(self, amount):
-        if self.balance + amount > 10000000:
+        if self.__balance + amount > 10000000:
             print('일천만원이 초과할 수 없습니다.')
             return
-        self.balance += amount
+        self.__balance += amount
         
     def withdraw(self, amount):
-        if self.balance < amount:
+        if self.__balance < amount:
             print('잔액이 부족합니다.')
             return
-        self.balance -= amount
+        self.__balance -= amount
 
     def __str__(self):
-        return f'계좌번호: {self.ano}, 소유주: {self.owner}, 잔액: {self.balance:10,d}'
+        return f'계좌번호: {self.ano}, 소유주: {self.owner}, 잔액: {self.__balance:10,d}'
     
 if __name__ == '__main__':
     acc = Account('230906', '제임스', 100000)
